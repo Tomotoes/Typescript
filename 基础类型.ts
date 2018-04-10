@@ -59,3 +59,15 @@ function getValue(a: any = getError()): void {
 }
 getValue()
 
+
+let d: { name: string } = {
+  name:'Simon'
+}
+
+class Uiser{
+  id: number
+  name:string
+}
+
+let User: Uiser = { id: 1, name: 'Simon' }
+/* 有没有一种 对象与类无缝转换的感觉 */

@@ -5,7 +5,7 @@ function HelloWorld<T>(arg: T): T{
 HelloWorld('Hello')
 HelloWorld<number>(123)
 
-/* 
+/*
  使用泛型函数有两种方式：
   - 直接方法名，会自动推到出泛型
   - 指明泛型，Hello<number>(123)
@@ -115,3 +115,22 @@ let x = { a: 1, b: 2, c: 3, d: 4 }
 
 copyFields(x, { b: 10, d: 20 })
 // 上例中，我们使用了两个类型参数，其中要求 T 继承 U，这样就保证了 U 上不会出现 T 中不存在的字段。
+
+
+/* 方法返回值的一个小技巧 返回值 as 类型 */
+function http<T>(url: string): Promise<T>{
+	return new Promise<T>(null)
+}
+function fetch<T>(url: string): Promise<T> {
+  // 远程请求数据并返回结果
+  return http(url).then(data => {
+    return data as T
+  })
+}
+
+class Userc {
+  name: string
+}
+
+// 泛型使用
+let user = fetch<Userc>('https://tasaid.com/user')
